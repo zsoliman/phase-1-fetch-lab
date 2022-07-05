@@ -1,6 +1,11 @@
-function fetchBooks() {
-  // To pass the tests, don't forget to return your fetch!
-  
+const fetchBooks = async () => {
+
+  let request = await fetch('https://anapioficeandfire.com/api/books') // requesting info from api server 
+  let response = await request.json()                                  // grabs data from server as an object
+  renderBooks(response)
+  response.forEach(book => console.log(book.name))
+  return fetch('https://anapioficeandfire.com/api/books')
+
 }
 
 function renderBooks(books) {
@@ -12,6 +17,6 @@ function renderBooks(books) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   fetchBooks();
 });
